@@ -30,7 +30,20 @@ sample estimates:
  #pearson is unranked, therefore use PEARSON method
 
 >  ggscatter(my_data, x = "mpg", y = "wt", add = "reg.line", conf.int = TRUE, cor.coef = TRUE, cor.method = "pearson", col="blue",main="COMPARISON OF CARS",xlab = "Kilometers / Liter", ylab = "Weight (Tons)")
-> plot<- ggscatter(my_data, x = "mpg", y = "wt", add = "reg.line", conf.int = TRUE, cor.coef = TRUE, cor.method = "pearson", col="blue",main="COMPARISON OF CARS",xlab = "Kilometers / Liter", ylab = "Weight (Tons)")
-> plot+theme(axis.text.x=element_text(size=50))
-> plot+theme(axis.text.x=element_text(size=25))
-> plot+theme(axis.text.y=element_text(size=25))
+
+#Renaming and saving the entire code of the scatterplot as "plot"
+plot<- ggscatter(my_data, x = "mpg", y = "wt", add = "reg.line", conf.int = TRUE, cor.coef = TRUE, cor.method = "pearson", col="blue",main="COMPARISON OF CARS",xlab = "Kilometers / Liter", ylab = "Weight (Tons)")
+
+#Giving the title to the Plot
+main="COMPARISON OF CARS"
+
+#Changing the X-axis label font size to 12
+plot+theme(axis.text.x=element_text(size=12))
+
+
+#Changing the Y-axis label font size to 12
+plot+theme(axis.text.y=element_text(size=12))
+
+
+#Changing the Font size of the title to 25 and position on TOP-MIDDLE
+plot+theme(plot.title = element_text(size=25, hjust=0.5))
