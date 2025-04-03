@@ -1,0 +1,64 @@
+
+#Author: Dayananda Rao;  Date: 3/27/2025;  Purpose: Perform ANOVA test
+
+
+
+#load dplyr library
+
+library(dplyr)
+
+
+#Store the http link in a variable called PATH
+PATH <- "https://raw.githubusercontent.com/guru99-edu/R-Programming/master/poisons.csv" 
+
+
+ 
+#Read CSV file from the link and save it as df
+df <- read.csv(PATH)
+
+
+#Read first fewrows and columns
+
+head(df)
+
+  X time poison treat
+1 1 0.31      1     A
+2 2 0.45      1     A
+3 3 0.46      1     A
+4 4 0.43      1     A
+5 5 0.36      2     A
+6 6 0.29      2     A
+
+ 
+
+df[,c(2:40)]
+
+
+#Load library ggplot2
+ library(ggplot2)
+
+
+
+# plot data using ggplot
+ggplot(df, aes(x = poison, y = time, fill = poison)) + geom_boxplot() + geom_jitter(shape = 15, color = "steelblue", position = position_jitter(0.21)) + theme_classic()
+
+
+
+
+#Apply the ANOVA function
+
+anova_one_way <- aov(time~poison, data = df) 
+
+
+
+summary(anova_one_way)
+
+            Df   Sum Sq    Mean Sq    F value    Pr(>F)    
+poison       1   0.9316    0.9316     20.67      3.96e-05 ***
+Residuals   46   2.0735    0.0451                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+ 
+
+
+
