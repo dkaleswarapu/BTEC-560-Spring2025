@@ -1,0 +1,39 @@
+#Author: Dayananda Rao;  Date: 4/08/2025;  Purpose: Calculate t-test
+
+# Generate Some dummydatasets for comparisons
+x = rnorm(10)
+y = rnorm(10)
+
+
+# View the random datasets
+> x
+ [1]  0.24279508 -0.61823720  0.02709152  1.54816256  1.59452010  1.58946660
+ [7] -0.76261898  0.45828654 -2.31958714 -1.04865826
+> y
+ [1] -0.47039329  0.08796548 -0.89200697 -1.46024795  0.95390040 -1.30559877
+ [7]  0.13997813 -0.82609503  1.67424094  0.45735781
+> 
+
+# Plotting X and Y to check for normal distribution
+
+pts = seq(-4.5,4.5,length=100)
+plot(pts,dt(pts,df=9),col='red',type='l')
+lines(density(x), col='green')
+lines(density(y), col='blue')
+
+# Apply the t-test function
+ttest = t.test(x,y)
+ttest
+
+Welch Two Sample t-test
+
+data:  x and y
+t = 0.45224, df = 16.998, p-value = 0.6568
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.862115  1.332539
+sample estimates:
+  mean of x   mean of y 
+ 0.07112208 -0.16408992 
+
+ 
